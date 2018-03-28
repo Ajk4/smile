@@ -591,7 +591,10 @@ public class RegressionTree implements Regression<double[]>, Serializable {
                         // higher priority.
                         double gain = (trueCount * trueMean * trueMean + falseCount * falseMean * falseMean) - n * split.output * split.output;
 
-                        double score = gain;
+                        Attribute attribute = attributes[j];
+                        double attributeWeight = attribute.getWeight();
+
+                        double score = gain *= attributeWeight;
                         double monoRegForFeature = monotonicRegression[j];
 
                         // False child - larger values of feature
