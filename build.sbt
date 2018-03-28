@@ -61,6 +61,8 @@ lazy val nonPubishSettings = commonSettings ++ Seq(
   publishLocalSigned := {}
 )
 
+resolvers += Resolver.url("bintray-sbt-plugins", url("https://dl.bintray.com/sbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)
+
 lazy val root = project.in(file(".")).settings(nonPubishSettings: _*)
   .aggregate(core, data, math, nd4j, netlib, graph, plot, interpolation, nlp, demo, benchmark, scala, shell)
 
